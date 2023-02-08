@@ -1,0 +1,28 @@
+.pagination {
+  height: 100%;
+  width: 100px;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 300ms;
+
+  & > svg {
+    width: 100%;
+  }
+
+  &:hover {
+    background: aqua;
+  }
+}
+
+.undo {
+  @extend .pagination;
+  left: -120px;
+}
+
+.redo {
+  @extend .pagination;
+  right: -120px;
+}

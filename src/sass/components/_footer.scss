@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  background-color: var(--headerColor);
+  padding: 100px;
+}
+
+.footer__list {
+  margin: auto;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  text-align: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.footer__icon-list {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.footer__icon-list svg {
+  fill: white;
+}
+
+.footer__icon-list a:hover svg {
+  fill: var(--hoverColor);
+}

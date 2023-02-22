@@ -6,8 +6,10 @@ import { visual } from './visualController';
 const gameApi = new GameAPI();
 
 export const load = {
+  isLoading: false,
+
   startPage() {
-    visual.hidden(`.undo`);
+    visual.show('.under__redo');
     clear.allSelectors(`.gallery-card`);
     gameApi.page = 1;
     this.gameList();
@@ -15,9 +17,6 @@ export const load = {
 
   nextPage(activePage) {
     gameApi.page++;
-    // if (gameApi.page > 1) {
-      // visual.show(`.undo`);
-    // }
     switch (activePage) {
       case `home`:
         this.gameList();
@@ -27,49 +26,52 @@ export const load = {
     }
   },
 
-  // previousPage(activePage) {
-  //   gameApi.page--;
-  //   if (gameApi.page === 1) {
-  //     visual.hidden(`.undo`);
-  //   }
-  //   switch (activePage) {
-  //     case `home`:
-  //       this.gameList();
-  //       break;
-  //     case `genres`:
-  //       this.gameListByGenre(gameApi.genre, gameApi.page);
-  //   }
-  // },
-
   async gameList() {
-    const {
-      data: { results },
-    } = await gameApi.getGames();
-    render.galleryCards(results);
+    try {
+      const {
+        data: { results },
+      } = await gameApi.getGames();
+      render.galleryCards(results);
+    } catch (error) {
+      error.message;
+    }
   },
 
   async gameListByGenre(genre, page = 1) {
-    gameApi.page = page;
-    gameApi.genre = genre;
-    // if (gameApi.page === 1) {
-    //   visual.hidden(`.undo`);
-    // }
-    const {
-      data: { results },
-    } = await gameApi.getGamesByGenre();
-    render.galleryCards(results);
+    try {
+      gameApi.page = page;
+      gameApi.genre = genre;
+      const {
+        data: { results },
+      } = await gameApi.getGamesByGenre();
+      render.galleryCards(results);
+    } catch (error) {
+      error.message;
+    } finally {
+      console.log(`ready`);
+    }
   },
 
   async details(id) {
-    gameApi.query = id;
-    const { data } = await gameApi.getDetails();
-    render.details(data);
+    try {
+      gameApi.query = id;
+      const { data } = await gameApi.getDetails();
+      render.details(data);
+    } catch (error) {
+      error.message;
+    }
   },
 
   async genres() {
-    const {
-      data: { results },
-    } = await gameApi.getGenres();
-    render.genreList(results);
+    try {
+      visual.hidden('.under__redo');
+      const {
+        data: { results },
+      } = await gameApi.getGenres();
+      render.genreList(results);
+    } catch (error) {
+      error.message;
+    } finally {
+    }
   },
 };

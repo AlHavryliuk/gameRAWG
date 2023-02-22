@@ -26,3 +26,25 @@
   @extend .pagination;
   right: -120px;
 }
+
+.under__redo {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & button {
+    padding: 15px 30px;
+    font-size: 18px;
+    transition: all 0.3;
+    color: black;
+    background: transparent;
+    border: 1px solid black;
+
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+}

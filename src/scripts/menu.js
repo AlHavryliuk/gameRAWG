@@ -38,14 +38,14 @@ export const menu = {
   },
 
   nextPage() {
-    clear.allSelectors(`.gallery-card`);
+    // clear.allSelectors(`.gallery-card`);
     load.nextPage(this.activePage);
   },
 
-  prevPage() {
-    clear.allSelectors(`.gallery-card`);
-    load.previousPage(this.activePage);
-  },
+  // prevPage() {
+  //   clear.allSelectors(`.gallery-card`);
+  //   load.previousPage(this.activePage);
+  // },
 
   getGamesByGenre({ target }) {
     const id = target.dataset.genreId;

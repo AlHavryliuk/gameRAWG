@@ -15,9 +15,9 @@ export const load = {
 
   nextPage(activePage) {
     gameApi.page++;
-    if (gameApi.page > 1) {
-      visual.show(`.undo`);
-    }
+    // if (gameApi.page > 1) {
+      // visual.show(`.undo`);
+    // }
     switch (activePage) {
       case `home`:
         this.gameList();
@@ -27,19 +27,19 @@ export const load = {
     }
   },
 
-  previousPage(activePage) {
-    gameApi.page--;
-    if (gameApi.page === 1) {
-      visual.hidden(`.undo`);
-    }
-    switch (activePage) {
-      case `home`:
-        this.gameList();
-        break;
-      case `genres`:
-        this.gameListByGenre(gameApi.genre, gameApi.page);
-    }
-  },
+  // previousPage(activePage) {
+  //   gameApi.page--;
+  //   if (gameApi.page === 1) {
+  //     visual.hidden(`.undo`);
+  //   }
+  //   switch (activePage) {
+  //     case `home`:
+  //       this.gameList();
+  //       break;
+  //     case `genres`:
+  //       this.gameListByGenre(gameApi.genre, gameApi.page);
+  //   }
+  // },
 
   async gameList() {
     const {
@@ -51,9 +51,9 @@ export const load = {
   async gameListByGenre(genre, page = 1) {
     gameApi.page = page;
     gameApi.genre = genre;
-    if (gameApi.page === 1) {
-      visual.hidden(`.undo`);
-    }
+    // if (gameApi.page === 1) {
+    //   visual.hidden(`.undo`);
+    // }
     const {
       data: { results },
     } = await gameApi.getGamesByGenre();

@@ -38,6 +38,9 @@ export const load = {
   },
 
   async gameListByGenre(genre, page = 1) {
+    document.querySelector(`.under__redo`).classList.contains(`isHidden`)
+      ? visual.show('.under__redo')
+      : -1;
     try {
       gameApi.page = page;
       gameApi.genre = genre;
